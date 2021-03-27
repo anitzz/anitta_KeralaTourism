@@ -6,6 +6,14 @@
 	<meta name="viewport" content="width=device-width,initial_scale=1, shrink-to-fit=no">
 	  <link rel="stylesheet" href="bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="style.css">
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SignUp</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial_scale=1, shrink-to-fit=no">
+	  <link rel="stylesheet" href="bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body class="bb">
 <form class="gg" action="districts.html">
@@ -24,14 +32,14 @@
     <div class="row mb-3">
     <label for="number" class="col-sm-2 col-form-label"><b>Mobile Number</b></label>
     <div class="col-sm-5">
-      <input type="tel" id="phone" required  class="form-control" name="phone" pattern="[0-9]{10}" title="Numbers Only and must contain only 10 numbers">
+      <input type="tel" id="phone" required  class="form-control" name="phone" pattern="([0-9]{10})" title="Numbers Only and must contain only 10 numbers">
     </div>
   </div>
     
   <div class="row mb-3">
     <label for="inputPassword3" class="col-sm-2 col-form-label"><b>Password</b></label>
     <div class="col-sm-5">
-      <input type="password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required class="form-control" id="inputPassword3">
+      <input type="password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required class="form-control" id="inputPassword3" onkeyup="CheckPasswordStrength(this.value);"><span id="password_strength"></span>
         
     </div>
   </div>
@@ -63,6 +71,70 @@
     <button type="submit" class="btn btn-primary offset-sm-1"><a href="index.html">Back</a></button>
 </form>
     </body>
+    <script type="text/javascript">
+    function CheckPasswordStrength(password) {
+        var password_strength = document.getElementById("password_strength");
+ 
+        //TextBox left blank.
+        if (password.length == 0) {
+            password_strength.innerHTML = "";
+            return;
+        }
+ 
+        //Regular Expressions.
+        var regex = new Array();
+        regex.push("[A-Z]"); //Uppercase Alphabet.
+        regex.push("[a-z]"); //Lowercase Alphabet.
+        regex.push("[0-9]"); //Digit.
+        regex.push("[$@$!%*#?&]"); //Special Character.
+ 
+        var passed = 0;
+ 
+        //Validate for each Regular Expression.
+        for (var i = 0; i < regex.length; i++) {
+            if (new RegExp(regex[i]).test(password)) {
+                passed++;
+            }
+        }
+		if (passed > 2 && password.length > 8) {
+            passed++;
+        }
+ 
+        //Display status.
+        var color = "";
+        var strength = "";
+        switch (passed) {
+            case 0:
+            case 1:
+                strength = "Weak";
+                color = "red";
+                break;
+            case 2:
+                strength = "Good";
+                color = "darkorange";
+                break;
+            case 3:
+            case 4:
+                strength = "Strong";
+                color = "green";
+                break;
+            case 5:
+                strength = "Very Strong";
+                color = "darkgreen";
+                break;
+        }
+		password_strength.innerHTML = strength;
+        password_strength.style.color = color;
+    }
+	function validateForm() {
+  var x = document.forms["myForm"]["fname"].value;
+  if (x == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+}
+</script>
+
     <footer><div style="padding-left: 50%"><b>Connect us on</b></div>
         <div  class="hh" style="padding-left: 47.5%"><img src="images/facebook.webp">&nbsp;&nbsp;<img src="images/twitter.webp">&nbsp;&nbsp;<img src="images/insta.webp"></div><br>
   <div style="padding-left: 45%;"> &copy; Copyright 2021 KeralaTourism</div>
