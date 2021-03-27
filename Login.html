@@ -20,7 +20,7 @@
   <div class="row mb-3">
       <label for="inputPassword3" class="col-sm-2 col-form-label"><b>Password</b></label>
     <div class="col-sm-7">
-      <input type="password" required class="form-control" id="inputPassword3">
+      <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"  required class="form-control" id="inputPassword3">
     </div>
   </div>
   <div class="row mb-3">
@@ -35,7 +35,7 @@
   </div>
         <button type="submit" class="btn btn-primary offset-sm-4">Login</button>
    
-        <button type="submit" class="btn btn-primary offset-sm-1"><a href="home.html">Back</a></button>
+        <button type="submit" class="btn btn-primary offset-sm-1"><a href="index.html">Back</a></button>
     </form>
     </body>
      <footer><div style="padding-left: 50%"><b>Connect us on</b></div>
