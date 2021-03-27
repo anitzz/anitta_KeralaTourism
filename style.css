@@ -2,7 +2,7 @@ body p{
     margin-left: 10px;
     margin-bottom: 20px;
 } .bb{
-    background-image:linear-gradient(#8ecb7c,white,#8ecb7c);
+    background-image:linear-gradient(white,#8ecb7c);
    /*background-image:linear-gradient(#8ecb7c,white,#8ecb7c); */
    
 }.dar{
